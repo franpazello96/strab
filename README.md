@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # strab
 =======
 Gestão de participantes em eventos presenciais. 
@@ -35,4 +34,3 @@ Gestão de participantes em eventos presenciais.
 
 ###
 Francielly Fileto Pazello
->>>>>>> 28a6a60 (first commit)
