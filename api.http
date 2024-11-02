@@ -1,0 +1,33 @@
+POST  http://localhost:3333/events
+Content-Type: application/json
+
+{
+  "title": "Treinamento NR-1",
+  "details": "Treinamento de segurança do trabalho",
+  "maximumAttendees": 1
+}
+
+###
+
+POST http://localhost:3333/events/fcfa2339-593d-4020-b4c7-b1dea1cb0a6f/attendees
+Content-Type: application/json
+
+{
+  "name": "teste",
+  "email": "teste1@hotmail.com"
+}
+
+###
+GET http://localhost:3333/events/fcfa2339-593d-4020-b4c7-b1dea1cb0a6f
+
+###
+GET http://localhost:3333/attendees/10/badge
+
+
+###
+GET http://localhost:3333/attendees/10/check-in
+
+
+###
+GET http://localhost:3333/events/fcfa2339-593d-4020-b4c7-b1dea1cb0a6f/attendees
+
