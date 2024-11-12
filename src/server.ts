@@ -4,7 +4,6 @@ import fastifySwaggerUI from "@fastify/swagger-ui";
 import {serializerCompiler, validatorCompiler, jsonSchemaTransform} from "fastify-type-provider-zod";
 import { createEvent } from "./routes/create-event";
 import { registerForEvent } from "./routes/register-for-event";
-import { get } from "http";
 import { getEvent } from "./routes/get-event";
 import { getAttendeeBadge } from "./routes/get-attendee-badge";
 import { checkIn } from "./routes/check-in";
@@ -15,8 +14,10 @@ import fastifyCors from "@fastify/cors";
 export const app = fastify(); 
 
 app.register(fastifyCors, {
-    origin: "*",
-})
+    origin: '*', // Permite qualquer origem (usado em desenvolvimento)
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'] // Cabeçalhos permitidos
+  });
 
 
 app.register(fastifySwagger, {

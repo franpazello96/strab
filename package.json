@@ -4,8 +4,8 @@
   "description": "Gestão de participantes em eventos presenciais.",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch --env-file .env src/server.ts", 
-    "build": "tsup src --format esm", 
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "build": "tsup src --format esm",
     "start": "node dist/server.mjs",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio"
@@ -28,6 +28,7 @@
     "@fastify/swagger": "^9.2.0",
     "@fastify/swagger-ui": "^5.1.0",
     "@prisma/client": "^5.20.0",
+    "expo": "^51.0.38",
     "fastify": "^5.0.0",
     "fastify-type-provider-zod": "^4.0.2",
     "zod": "^3.23.8"

@@ -1,8 +1,18 @@
-import type { FastifyInstance } from "fastify";
+import type { FastifyInstance, FastifyRequest } from "fastify";
 import type { ZodTypeProvider } from "fastify-type-provider-zod";
-import {z} from "zod";
+import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { BadRequest } from "./_errors/bad_request";
+
+type RegisterForEvent = FastifyRequest<{
+  Params: {
+    eventId: string;
+  },
+  Body: {
+    name: string;
+    email: string;
+  }
+}>
 
 export async function registerForEvent (app: FastifyInstance){
   app
@@ -13,7 +23,7 @@ export async function registerForEvent (app: FastifyInstance){
       tags: ["Participantes"],
       body: z.object({
         name: z.string().min(4),
-        email: z.string().email(),
+        email: z.string().email().toLowerCase(),
       }),
       params: z.object({
         eventId: z.string().uuid(),
@@ -24,7 +34,7 @@ export async function registerForEvent (app: FastifyInstance){
         })
       }
     }
-  }, async (request, reply) => {
+  }, async (request: RegisterForEvent, reply) => {
     const {eventId} = request.params; // pegar o id do evento
     const {name, email} = request.body; // pegar o nome e email do participante
     
